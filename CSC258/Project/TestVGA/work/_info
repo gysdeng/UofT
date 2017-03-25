@@ -8,3 +8,63 @@ z2
 !i10f 100
 cModel Technology
 dE:/201507-/Year2/2_Winter/CSC258/LAB/7/InLab/3_ModelSim
+vcontrol
+!s110 1490212587
+!i10b 1
+!s100 o;ROPZjT7T^`Ffn=1F5[n2
+I?T<:lDb]Jh9:EPMXe^B<b1
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dE:/201507-/UofT/CSC258/Project/TestVGA
+w1490212583
+8E:/201507-/UofT/CSC258/Project/TestVGA/control.v
+FE:/201507-/UofT/CSC258/Project/TestVGA/control.v
+L0 1
+Z2 OV;L;10.4d;61
+r1
+!s85 0
+31
+!s108 1490212586.000000
+!s107 E:/201507-/UofT/CSC258/Project/TestVGA/control.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/201507-/UofT/CSC258/Project/TestVGA/control.v|
+!i113 1
+Z3 o-work work
+vdatapath
+!s110 1490305785
+!i10b 1
+!s100 mF_0h<I@N?6Z>MiKM4kj^2
+IiMfAOfkX>?nXab>0Go?Pl1
+R0
+R1
+w1490305746
+8E:/201507-/UofT/CSC258/Project/TestVGA/datapath.v
+FE:/201507-/UofT/CSC258/Project/TestVGA/datapath.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1490305784.000000
+!s107 E:/201507-/UofT/CSC258/Project/TestVGA/datapath.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/201507-/UofT/CSC258/Project/TestVGA/datapath.v|
+!i113 1
+R3
+vtestvga
+!s110 1490305791
+!i10b 1
+!s100 JcF5VY@0;F^EZf?Dh>F>l0
+IRmeIOf;o@5cIF;azTJm^b1
+R0
+R1
+w1490211153
+8vgamodule.v
+Fvgamodule.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1490305791.000000
+!s107 vgamodule.v|
+!s90 -reportprogress|300|-timescale|1ps/1ps|vgamodule.v|
+!i113 1
+o-timescale 1ps/1ps

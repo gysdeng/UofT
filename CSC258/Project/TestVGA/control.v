@@ -17,18 +17,24 @@ module control(
     reg [18:0] onesixty;
     reg [5:0] frames;
 
+    localparam	INIT	= 3'd0,
+		DRAW	= 3'd1,
+		ERASE	= 3'd2,
+		MOVE	= 3'd3,
+		WAIT    = 3'd4;
+
     // 1/60 clock + framerate clock
     always @(posedge clk)
     begin
 	if(resetn == 1) begin
 	    onesixty <= 19'd83_3333;
 	    frames <= 6'd60;
-		
-		 curr<=INIT;
+	    
+	    curr<=INIT;
 	    end
 	else begin
 	    onesixty <= onesixty - 1'b1;
-		 curr <= next;
+	    curr <= next;
 	    end
 	if(onesixty == 19'b0) begin
 	    onesixty <= 19'd83_3333;
@@ -38,19 +44,12 @@ module control(
 	    frames <= 6'd60;
 	    refresh <= 1'b1;
 	    end
-		 
-	   
+		 	   
 	if(curr == MOVE || curr == WAIT)
 	    refresh <= 1'b0;
    
 	 
 	end // end always clock
-
-    localparam	INIT	= 3'd0,
-		DRAW	= 3'd1,
-		ERASE	= 3'd2,
-		MOVE	= 3'd3,
-		WAIT    = 3'd4;
 
     always @(*)
     begin: state_table

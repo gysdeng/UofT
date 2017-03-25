@@ -28,7 +28,7 @@ module datapath(
 
 	    if(init == 1'b1) begin
 		loadx <= 8'd10;
-		loady <= 7'd10;
+		loady <= 7'd0;
 		end
 		
 	    else begin // draw
@@ -45,10 +45,10 @@ module datapath(
 	if(move == 1'b1)
 	    loady <= loady + 1'b1;
 		
-	if(loadx == 8'b0)
-		loadx <= 8'b10;
-	if(loadx == 7'b0)
-		loadx <= 7'b10;
+//	if(loadx == 8'b0)
+//		loadx <= 8'b10;
+	if(loadx == 7'b111_1111)
+		loadx <= 7'b0;
 
     end // end always
 
