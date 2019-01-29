@@ -47,14 +47,19 @@ class piece:
         
         s = ""
         target = []    
-        target.append(self.end)
         
         for name, item in self.related.items():
             if item.status == "unused":
                 s = s + item.curr.name + ", "   
                 target.append(item.curr)
 
-        return s + self.end.name if isText else target # room
+        if len(target) == 0:
+            target.append(self.end)
+            s += self.end.name
+        else:
+            s = s[0:-2]
+        
+        return s if isText else target # room
     
     
     ## watch for complementary items

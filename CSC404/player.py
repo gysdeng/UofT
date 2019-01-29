@@ -33,7 +33,7 @@ class player:
         if self.holding[name].curr != self.curr:
             self.holding[name].updateRoom(self.curr)
         
-        
+        del self.holding[name]
         
         return "You used {} in {}!".format(name, self.curr)
     
