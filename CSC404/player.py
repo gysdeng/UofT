@@ -16,23 +16,24 @@ class player:
         return "Your hands are full!"
     
     def drop(self, name):
+        
         self.holding[name].status = "unused"
         
         # change the room that the item is in
-        if self.curr != self.holding[name].curr:
-            self.holding[name].prev = self.holding[name].curr
-            self.holding[name].curr = self.curr
-            
+        if self.holding[name].curr != self.curr:
+            self.holding[name].updateRoom(self.curr)
+        
+        del self.holding[name]
+        
         return "You dropped {} in {}!".format(name, self.curr)
     
     def use(self, name):
         self.holding[name].status = "used"
         
-        if self.curr != self.holding[name].curr:
-                    self.holding[name].prev = self.holding[name].curr
-                    self.holding[name].curr = self.curr
+        if self.holding[name].curr != self.curr:
+            self.holding[name].updateRoom(self.curr)
         
-        del self.holding[name]
+        
         
         return "You used {} in {}!".format(name, self.curr)
     

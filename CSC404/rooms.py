@@ -37,7 +37,10 @@ if __name__ == "__main__":
     main = room("MAIN")
     
     kitchen = room("KITCHEN")
-    print(kitchen)
+    bathroom = room("BATHROOM")
     
-    kitchen.addItem("Microwave", main.name)
+    kitchen.addItem("Microwave", main)
     kitchen.printItems()
+    
+    bathroom.addItem("Handle", main, [kitchen.items["Microwave"]])
+    bathroom.printItems()

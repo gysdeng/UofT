@@ -31,7 +31,7 @@ class Runner:
         # Generate items in side room test
         self.rooms["KITCHEN"].addItem("Microwave", self.main)
         self.rooms["KITCHEN"].addItem("Oven", self.main)
-        self.rooms["BATHROOM"].addItem("Handle", self.main, [self.rooms["KITCHEN"].items["Oven"]])        
+        self.rooms["BATHROOM"].addItem("Handle", self.main, [self.rooms["KITCHEN"].items["Oven"]])
 
         
     def printStatus(self):
@@ -92,11 +92,16 @@ if __name__ == "__main__":
     r.player.enter("KITCHEN")
     r.player.pickUp("Oven")
     
-    r.player.holding["Handle"].poll()
-    r.printStatus()
+    r.printStatus() # Handle should not direct to KITCHEN here
+    
+    # Need to test drop as well as if it adds back to target when dropped
+    r.player.drop("Oven")
+    r.printStatus() # Handle should direct to KITCHEN here
+    
+    r.player.pickUp("Oven")
     
     r.player.enter("MAIN")
     r.player.use("Oven")
     r.player.use("Handle")
     
-    # Need to test drop as well as if it adds back to target when dropped
+    r.printStatus()

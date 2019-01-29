@@ -18,10 +18,11 @@ class piece:
         self.start = start
         self.prev = start
         self.curr = start
+        self.end = end
         self.status = status
         
-        self.targets = []
-        self.targets.append(end)        
+        #self.targets = []
+        #self.targets.append(end)        
         
         self.related = {}
         
@@ -29,15 +30,12 @@ class piece:
         if related != None:
             for i in related:
                 self.related[i.name] = i
-                self.targets.append(i.curr)
+                #self.targets.append(i.curr)
     
     
     def __str__(self):
-        s = "{0}: Status: {1}, Placed in {2}, Currently In: {3}, Directing to: ".format(
-            self.name, self.status, self.start, self.curr)
-        for target in self.targets:
-            s = s + str(target) + " "
-        return s.strip()
+        return  "{0}: Status: {1}, Placed in {2}, Currently In: {3}, Directing to: {4}".format(
+            self.name, self.status, self.start, self.curr, self.getTargets(True))
     
     
     def updateRoom(self, nxt):
@@ -45,18 +43,32 @@ class piece:
         self.curr = nxt
         
 
-    # watch for complementary items
-    def poll(self):
+    def getTargets(self, isText = False):
         
-        if self.status != "used":
+        s = ""
+        target = []    
+        target.append(self.end)
+        
+        for name, item in self.related.items():
+            if item.status == "unused":
+                s = s + item.curr.name + ", "   
+                target.append(item.curr)
+
+        return s + self.end.name if isText else target # room
+    
+    
+    ## watch for complementary items
+    #def poll(self):
+        
+        #if self.status != "used":
             
-            print("Polling!")
+            #print("Polling!")
             
-            for key, val in self.related.items():
-                if val.status == "used":
-                    self.targets.remove(val.curr)
-                elif val.status == "holding":
-                    self.targets.remove(val.curr)
-                elif val.status == "holding":
-                    self.targets.remove(val.prev)
-                    self.targets.append(val.curr)
+            #for key, val in self.related.items():
+                #if val.status == "used":
+                    #self.targets.remove(val.curr)
+                #elif val.status == "holding":
+                    #self.targets.remove(val.curr)
+                #elif val.status == "holding":
+                    #self.targets.remove(val.prev)
+                    #self.targets.append(val.curr)
